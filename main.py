@@ -5,10 +5,10 @@ import datetime
 from random import choice
 from PIL import Image, ImageDraw, ImageFont
 
-BOT_TOKEN = os.getenv('BITBUCKET_BOT_TOKEN_TEST_TASK')
-IMAGES_PATH = os.getenv('BITBUCKET_BOT_IMAGES_PATH')
-PHRASES = os.getenv('BITBUCKET_BOT_PHRASES')
-CHANNEL_TO_REPOST = os.getenv('BITBUCKET_BOT_CHANNEL_TO_REPOST')
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+IMAGES_PATH = os.getenv('IMAGES_PATH')
+PHRASES = os.getenv('PHRASES')
+CHANNEL_TO_REPOST = os.getenv('CHANNEL_TO_REPOST')
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -70,7 +70,7 @@ def reply_picture(message):
         signed_photo = photo_draw_text(src)
         bot.send_photo(message.chat.id, signed_photo, reply_markup=gen_share_markup())
     except Exception as e:
-        print(e)
+        print(str(e))
         bot.send_message(message.chat.id, 'Something gone wrong')
 
 
